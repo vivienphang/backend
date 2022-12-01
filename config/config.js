@@ -1,9 +1,16 @@
-module.exports = {
-  development: {
-    username: "vivienphang",
-    password: null,
-    database: "job-portal",
-    host: "127.0.0.1",
-    dialect: "postgres",
-  },
+require("dotenv").config();
+const mongoose = require("mongoose");
+
+// Create a new MongoClient
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URI);
+    console.log(`db connected, ${conn.connection.host}`);
+  } catch (error) {
+    console.log("error in connecting to db");
+    console.log(error);
+    process.exit(1);
+  }
 };
+
+module.exports = connectDB;
