@@ -1,5 +1,6 @@
 import connectDB from "../config/config";
-import JobModel from "../models/job";
+import { JobModel } from "../models/model";
+
 const loremIpsum = require("lorem-ipsum").loremIpsum;
 const jobTitle = ["Frontend Developer", "Backend Developer"];
 const salary = [2000, 3500, 4000, 4500, 5000];
@@ -13,24 +14,13 @@ const technologies = [
   "TypeScript",
   "MongoDB",
 ];
-const randomizeIndex = (arrLength) => {
+const NUM_OF_JOBS = 10;
+const randomizeIndex = (arrLength: any) => {
   return Math.floor(Math.random() * arrLength);
 };
 
-// loremIpsum({
-//   count: 1,
-//   // Number of "words", "sentences", or "paragraphs"
-//   format: "plain",
-//   // "plain" or "html"
-//   random: Math.random,
-//   // A PRNG function
-//   sentenceLowerBound: 5,
-//   // Min. number of words per sentence.
-//   sentenceUpperBound: 15, // Max. number of words per sentence.
-// });
-
 connectDB().then(async () => {
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < NUM_OF_JOBS; i++) {
     const newJob = await JobModel.create({
       title: jobTitle[randomizeIndex(jobTitle.length)],
       description: loremIpsum(),
