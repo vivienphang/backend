@@ -1,6 +1,6 @@
-import connectDB from "../config/config";
-import { JobModel } from "../models/model";
-import { loremIpsum } from "lorem-ipsum";
+const connectDB = require("../config/config");
+const { JobModel } = require("../models/model");
+const loremIpsum = require("lorem-ipsum").loremIpsum;
 const jobTitle = ["Frontend Developer", "Backend Developer"];
 const salary = [2000, 3500, 4000, 4500, 5000];
 const technologies = [
